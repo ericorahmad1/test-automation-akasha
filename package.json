@@ -1,0 +1,32 @@
+{
+  "name": "akasha-qa-automation",
+  "version": "1.0.0",
+  "description": "Playwright QA: page health, CTA & checkout flow for akashayogaacademy.com + course.akashayogaacademy.com",
+  "scripts": {
+    "discover": "node scripts/discover-urls.mjs",
+    "test": "npm run discover && playwright test",
+    "test:smoke": "cross-env SMOKE=1 npm test",
+    "test:course": "npm run discover && playwright test --project=course",
+    "test:main": "npm run discover && playwright test --project=main",
+    "test:checkout": "npm run discover && playwright test --grep @checkout",
+    "test:health": "npm run discover && playwright test --grep @health",
+    "test:navigation": "playwright test --grep @navigation",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "check": "npm run typecheck && npm run lint",
+    "report": "playwright show-report reports/playwright-html"
+  },
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@eslint/js": "9.17.0",
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.2",
+    "cross-env": "^7.0.3",
+    "eslint": "9.17.0",
+    "eslint-plugin-playwright": "2.1.0",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "8.18.2"
+  }
+}
